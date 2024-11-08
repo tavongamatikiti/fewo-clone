@@ -1,19 +1,9 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
-import fs from 'fs';
+import { defineConfig } from "vite";
 
-// Automatically find all HTML files in the 'pages' directory
-const pagesDir = resolve(__dirname, 'pages');
-const entries = Object.fromEntries(
-  fs.readdirSync(pagesDir)
-    .filter(file => file.endsWith('.html'))
-    .map(file => [file.replace('.html', ''), resolve(pagesDir, file)])
-);
-
+// https://vitejs.dev/config/
 export default defineConfig({
   build: {
-    rollupOptions: {
-      input: entries
-    }
-  }
+    outDir: "dist", // Output directory for build files
+  },
+  // Add additional configurations here if necessary
 });
